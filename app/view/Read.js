@@ -62,10 +62,15 @@ export default class Read extends React.Component {
                     renderItem={({item, index}) => {
                         return (
 
-                            <CardItem bordered style={{padding: 20}}>
-                                <Text>Name: {item.name} {'\n'}Address: {item.address}{'\n'}Contact
-                                    No: {item.contact}{'\n'}Email: {item.email}{'\n'}Gender: {item.gender}</Text>
-                            </CardItem>
+                            <View style={{padding: 20}}>
+                                <Text>Name: {item.name}</Text>
+                                <Text>Address: {item.address}</Text>
+                                <Text>Contact No: {item.contact}</Text>
+                                <Text>Email: {item.email}</Text>
+                                <Text>Gender: {item.gender}</Text>
+                                <Button onPress={() => this.props.navigation.navigate('UpdateRT',{userInfoKey: `${JSON.stringify(item.key)}`},)} small danger style={{padding: 5}}><Text style={{color: '#fff'}}>Edit</Text></Button>
+
+                            </View>
 
 
                         );
