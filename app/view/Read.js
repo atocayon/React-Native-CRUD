@@ -33,7 +33,7 @@ export default class Read extends React.Component {
             });
         });
         this.setState({
-            userInfo: userInfo.sort((a,b)=>{
+            userInfo: userInfo.sort((a, b) => {
                 return (a.name > b.name);
             }),
             isLoading: false,
@@ -63,12 +63,33 @@ export default class Read extends React.Component {
                         return (
 
                             <View style={{padding: 20}}>
-                                <Text>Name: {item.name}</Text>
-                                <Text>Address: {item.address}</Text>
-                                <Text>Contact No: {item.contact}</Text>
-                                <Text>Email: {item.email}</Text>
-                                <Text>Gender: {item.gender}</Text>
-                                <Button onPress={() => this.props.navigation.navigate('UpdateRT',{userInfoKey: `${JSON.stringify(item.key)}`},)} small danger style={{padding: 5}}><Text style={{color: '#fff'}}>Edit</Text></Button>
+                                <Grid>
+                                    <Col>
+                                        <View>
+                                            <Text>Name: {item.name}</Text>
+                                            <Text>Address: {item.address}</Text>
+                                            <Text>Contact No: {item.contact}</Text>
+                                            <Text>Email: {item.email}</Text>
+                                            <Text>Gender: {item.gender}</Text>
+                                        </View>
+
+                                    </Col>
+                                    <Col>
+                                        <View style={{flex: 1}}>
+                                            <Button
+                                                onPress={() => this.props.navigation.navigate('UpdateRT', {userInfoKey: `${JSON.stringify(item.key)}`})}
+                                                small info style={{padding: 5, width: 50}}><Text
+                                                style={{color: '#fff'}}>Edit</Text></Button>
+                                            <Button
+                                                onPress={()=>this.props.navigation.navigate('DeleteRT', {userInfoKey: `${JSON.stringify(item.key)}`})}
+                                                small danger style={{marginTop: 10, padding: 5}}>
+                                                <Text style={{color: '#fff'}}>Delete</Text>
+                                            </Button>
+                                        </View>
+
+                                    </Col>
+                                </Grid>
+
 
                             </View>
 

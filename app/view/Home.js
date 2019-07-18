@@ -31,19 +31,12 @@ export default class Home extends React.Component {
                     <CardItem bordered style={{backgroundColor: '#666666'}}><Text onPress={() => {
                         console.log('Create Selected');
                         this.props.navigation.navigate('CreateRT');
-                    }} style={{fontSize: 20, color: '#fff'}}>Create</Text></CardItem>
+                    }} style={{fontSize: 20, color: '#fff'}}>Add</Text></CardItem>
                     <CardItem bordered style={{backgroundColor: '#666666'}}><Text onPress={() => {
                         console.log('Read Selected');
                         this.props.navigation.navigate('ReadRT');
-                    }} style={{fontSize: 20, color: '#fff'}}>Read</Text></CardItem>
-                    {/*<CardItem bordered style={{backgroundColor: '#666666'}}><Text onPress={() => {*/}
-                    {/*    console.log('Update Selected');*/}
-                    {/*    this.props.navigation.navigate('UpdateRT');*/}
-                    {/*}} style={{fontSize: 20, color: '#fff'}}>Update</Text></CardItem>*/}
-                    <CardItem bordered style={{backgroundColor: '#666666'}}><Text onPress={() => {
-                        console.log('Delete Selected');
-                        this.props.navigation.navigate('DeleteRT');
-                    }} style={{fontSize: 20,color: '#fff'}}>Delete</Text></CardItem>
+                    }} style={{fontSize: 20, color: '#fff'}}>View</Text></CardItem>
+
                 </Content>
             </Container>
         );
