@@ -45,6 +45,39 @@ export default class Update extends React.Component {
         });
     }
 
+    update = () => {
+        this.setState(
+            {
+                isLoading: true
+            }
+        );
+
+        const { navigation } = this.props;
+        const updateRef = firebase.firestore().collection('userInfo').doc(this.state.key);
+        updateRef.set({
+           name: this.state.name,
+           address: this.state.address,
+           contact: this.state.contact,
+           email: this.state.email,
+           gender: this.state.gender
+        }).then((docRef) => {
+            console.log('Update Success!!!');
+            this.setState({
+                name: '',
+                address: '',
+                contact: '',
+                email: '',
+                gender: undefined
+            });
+            this.props.navigation.navigate('ReadRT');
+        }).catch(()=>{
+            console.log('Error Updating...');
+            this.setState({
+                isLoading: false
+            });
+        });
+    }
+
 
     render() {
         return (
@@ -70,7 +103,7 @@ export default class Update extends React.Component {
                             <Label> Name </Label>
                             <Input value={this.state.name}
                                    onChangeText={
-                                       name => {
+                                       (name) => {
                                            {
                                                console.log(`Name: ${name}`);
                                                this.setState({name: name});
@@ -85,7 +118,7 @@ export default class Update extends React.Component {
                             <Label> Address </Label>
                             <Input value={this.state.address}
                                    onChangeText={
-                                       address => {
+                                       (address) => {
                                            {
                                                console.log(`Address: ${address}`);
                                                this.setState({address: address});
@@ -100,7 +133,7 @@ export default class Update extends React.Component {
                             <Label> Contact No. </Label>
                             <Input value={this.state.contact}
                                    onChangeText={
-                                       contact => {
+                                       (contact) => {
                                            {
                                                console.log(`Contact: ${contact}`);
                                                this.setState({contact: contact});
@@ -115,7 +148,7 @@ export default class Update extends React.Component {
                             <Label> Email </Label>
                             <Input value={this.state.email}
                                    onChangeText={
-                                       email => {
+                                       (email) => {
                                            {
                                                console.log(`Email: ${email}`);
                                                this.setState({email: email});
@@ -139,7 +172,7 @@ export default class Update extends React.Component {
                                     placeholderIconColor="#007aff"
                                     selectedValue={this.state.gender}
                                     onValueChange={
-                                        text => {
+                                        (text) => {
                                             console.log(`Gender: ${text}`);
                                             this.setState({gender: text});
                                         }
@@ -163,7 +196,7 @@ export default class Update extends React.Component {
                                 justifyContent: 'center',
                             }
                         }
-                                onPress={this.create}>
+                                onPress={this.update}>
                             <Text style={
                                 {fontWeight: 'bold', color: 'white'}
                             }>
